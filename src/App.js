@@ -1,7 +1,12 @@
 import "./App.css";
+import IncidentList from "./components/IncidentList.js";
 
 function App() {
-  return <div className="App"></div>;
+  return (
+    <div className="incident-logger">
+      <IncidentList />
+    </div>
+  );
 }
 
 export default App;
