@@ -15,8 +15,9 @@ function IncidentList() {
       {incidents.map((incident, index) => (
         <div key={index} className="incident">
           <strong>
-            {incident.title} - {incident.date}
+            {incident.name} - {incident.date}
           </strong>
+          <div className="incident-title">{incident.title}</div>
           <p>{incident.description}</p>
         </div>
       ))}

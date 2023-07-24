@@ -2,11 +2,16 @@ import React, { useState } from "react";
 
 function IncidentForm({ onSubmit }) {
   const [title, setTitle] = useState("");
+  const [name, setName] = useState("");
   const [date, setDate] = useState("");
   const [description, setDescription] = useState("");
 
   const handleTitleChange = (event) => {
     setTitle(event.target.value);
+  };
+
+  const handleNameChange = (event) => {
+    setName(event.target.value);
   };
 
   const handleDateChange = (event) => {
@@ -20,15 +25,16 @@ function IncidentForm({ onSubmit }) {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    if (!title || !description || !date) {
+    if (!title || !description || !date || !name) {
       alert(
-        "Please enter an incident with a description and the date it occurred."
+        "Please enter an incident with a description, the date it occurred, and the name of individual."
       );
       return;
     }
 
-    onSubmit({ title, date, description });
+    onSubmit({ title, name, date, description });
     setTitle("");
+    setName("");
     setDate("");
     setDescription("");
   };
@@ -38,6 +44,8 @@ function IncidentForm({ onSubmit }) {
       <h1>Incident Logger</h1>
       <label>Title:</label>
       <input type="text" value={title} onChange={handleTitleChange} />
+      <label>Name:</label>
+      <input type="text" value={name} onChange={handleNameChange} />
       <label>Date:</label>
       <input type="date" value={date} onChange={handleDateChange} />
       <div>
